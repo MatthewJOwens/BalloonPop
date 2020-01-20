@@ -1,6 +1,7 @@
 :root {
   --primary: #f393fd;
   --primary-darken: #aa41b5;
+  --primary-lighten: #fdc5ff;
   --bg: #e0d9d9;
   --shadow: 2px 0 8px rgba(0, 0, 0, .3);
   --corners: 4px;
@@ -53,10 +54,16 @@ button:hover {
   background-color: var(--primary-darken);
 }
 
+.game-container {
+  height: 300px
+}
+
 .pump {
+  margin-TOP: 80px;
   height: 130px;
   width: 180px;
   position: relative;
+  align-self: flex;
 }
 
 .handle {
@@ -64,10 +71,12 @@ button:hover {
   width: 80px;
   background-color: var(--dark-lighten);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -80px;
+  left: 50px;
   display: flex;
   justify-content: center;
+  transition: all .05s linear;
+  z-index: 1;
 }
 
 .handle::before {
@@ -78,12 +87,65 @@ button:hover {
   display: block;
 }
 
+.pump:active .handle {
+  top: -20px;
+}
+
+.pump-box {
+  background-color: var(--primary-lighten);
+  height: 130px;
+  width: 180px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.pump-box span {
+  background-color: antiquewhite;
+  padding: .5em;
+}
+
 .balloon {
-  height: 120px;
+  height: 140px;
   width: 100px;
   background-color: blue;
   border-radius: 50%;
   transition: all .2s ease;
+  animation: balloon-float 5s ease-in-out infinite;
+  align-self: flex-end;
+  margin: 0 auto;
+  box-shadow: inset -10px -10px 12px rgba(255, 255, 255, 0.302), inset 10px 10px 12px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(-45deg, #430101 0%, #fa1e01 60%, #ff0000 80%, #ffffff 100%);
+}
+
+.balloon.green {
+  filter: hue-rotate(130deg);
+}
+
+.balloon.blue {
+  filter: hue-rotate(225deg);
+}
+
+.balloon.purple {
+  filter: hue-rotate(277deg);
+}
+
+.balloon.pink {
+  filter: hue-rotate(325deg);
+}
+
+@keyframes balloon-float {
+  0%, 100% {
+    transform: translateY(-25px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(-5deg);
+  }
 }
 
 .container {

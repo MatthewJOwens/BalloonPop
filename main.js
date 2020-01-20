@@ -12,6 +12,8 @@ let gameLength = 5000
 let clockId = 0
 let timeRemaining = 0
 let currentPlayer = {}
+let currentColor = "red"
+let possibleColors = ["red", "green", "blue", "purple", "pink"]
 
 function startGame() {
   console.log("Get poppin'!")
@@ -41,14 +43,27 @@ function inflate() {
   clickCount++
   balloonHeight += inflationRate
   balloonWidth += inflationRate
+  checkBalloonPop()
+  draw()
+}
 
+function checkBalloonPop() {
   if (balloonHeight >= maxSize) {
     console.log("Pop the balloon")
+    let balloonElement = document.getElementById("balloon")
+    balloonElement.classList.remove(currentColor)
+    getRandomColor()
+    balloonElement.classList.add(currentColor)
     currentPopCount++
     balloonHeight = 0
     balloonWidth = 0
   }
-  draw()
+
+}
+
+function getRandomColor() {
+  let i = Math.floor(Math.random() * possibleColors.length)
+  currentColor = possibleColors[i]
 }
 
 function draw() {
