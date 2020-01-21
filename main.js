@@ -19,6 +19,7 @@ function startGame() {
   console.log("Get poppin'!")
   document.getElementById("game-controls").classList.remove("hidden")
   document.getElementById("main-controls").classList.add("hidden")
+  document.getElementById("scoreboard").classList.add("hidden")
   startClock()
   setTimeout(stopGame, gameLength)
 }
@@ -91,6 +92,7 @@ function draw() {
 function stopGame() {
   console.log("The game is over.")
   document.getElementById("main-controls").classList.remove("hidden")
+  document.getElementById("scoreboard").classList.remove("hidden")
   document.getElementById("game-controls").classList.add("hidden")
 
   clickCount = 0
@@ -105,6 +107,7 @@ function stopGame() {
 
   stopClock()
   draw()
+  drawScoreboard()
 }
 // #endregion
 
@@ -129,6 +132,7 @@ function setPlayer(event) {
   document.getElementById("game").classList.remove("hidden")
   form.classList.add("hidden")
   draw()
+  drawScoreboard()
 }
 
 function changePlayer() {
@@ -146,3 +150,22 @@ function loadPlayers() {
     players = playersData
   }
 }
+function drawScoreboard() {
+  let template = ""
+
+  players.forEach(player => {
+    template += `
+        <div class="d-flex space-between">
+      <span>
+        <i class="fa user"></i>
+        ${player.name}
+      </span>
+      <span>score: ${player.topScore}</span>
+    </div>
+    `
+  })
+
+  document.getElementById("players").innerHTML = template
+}
+
+drawScoreboard()
