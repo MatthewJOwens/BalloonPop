@@ -219,6 +219,10 @@ button:hover {
   margin-bottom: 1.5em;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .hidden {
   display: none !important;
 }

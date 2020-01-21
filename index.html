@@ -20,7 +20,7 @@
   </header>
 
   <main class="container card">
-    <form class="d-flex space-between hidden" id="player-form" onsubmit="setPlayer(event)">
+    <form class="d-flex space-between" id="player-form" onsubmit="setPlayer(event)">
       <div>
         <label for="name">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -30,9 +30,7 @@
       <button type="submit">OK</button>
     </form>
 
-    <!-- TODO replace hidden class -->
-
-    <section id="game" class="game ">
+    <section id="game" class="game hidden">
 
       <div class="card bg-dark text-light">
         <div class="d-flex space-between">
@@ -47,12 +45,12 @@
         </div>
       </div>
 
-      <div id="main-controls" class="d-flex space-around mt-2 hidden">
+      <div id="main-controls" class="d-flex space-around mt-2">
         <button class="btn-dark" onclick="changePlayer()">Change Player</button>
         <button id="start-button" onclick="startGame()">START GAME</button>
       </div>
-      <!-- TODO replace hidden class -->
-      <div id="game-controls" class="">
+
+      <div id="game-controls" class="hidden">
 
         <div>
           <span>Balloons Popped</span>
@@ -73,13 +71,30 @@
           </div>
 
           <div id="balloon" class="balloon"></div>
+          <audio id="pop-sound" src="burst.mp3"></audio>
         </div>
 
       </div>
     </section>
   </main>
 
-
+  <div id="scoreboard" class="container card mt-2">
+    <h3 class="text-center">Scoreboard</h3>
+    <div class="d-flex space-between">
+      <span>
+        <i class="fa user"></i>
+        Jake
+      </span>
+      <span>score: 10</span>
+    </div>
+    <div class="d-flex space-between">
+      <span>
+        <i class="fa user"></i>
+        Brittany
+      </span>
+      <span>score: 8</span>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>

@@ -8,7 +8,7 @@ let inflationRate = 20
 let maxSize = 300
 let highestPopCount = 0
 let currentPopCount = 0
-let gameLength = 5000
+let gameLength = 10000
 let clockId = 0
 let timeRemaining = 0
 let currentPlayer = {}
@@ -54,6 +54,10 @@ function checkBalloonPop() {
     balloonElement.classList.remove(currentColor)
     getRandomColor()
     balloonElement.classList.add(currentColor)
+
+    // @ts-ignore
+    document.getElementById("pop-sound").play()
+
     currentPopCount++
     balloonHeight = 0
     balloonWidth = 0
